@@ -1,0 +1,47 @@
+
+/* hora do dia */
+
+*{
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+#area_hora_mais_imagem{
+    max-width: 700px;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: rgba(0, 0, 0, 0.301) 2px 2px 6px;
+}
+#horaDia{
+    font: 15pt Arial;
+}
+#statusDiaImagem{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-image: url("manha.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* calculador de idade */
+
+#rentagulo_branco{
+    padding: 10px;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: black 2px 2px 6px;
+}
+#descricaoPessoa{
+    font: 15pt Arial;
+    text-align: center;
+}
+#fotoPessoa{
+    margin: 20px auto;
+    border-radius: 50%;
+    background-image: url("");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.form{
+    margin: 10px 0;
+}

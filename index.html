@@ -9,12 +9,13 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
         <!-- outros -->
+        <link rel="stylesheet" href="estilo.css">
         <title>Portfólio</title>
         <style>
         </style>
     </head>
     <body>
-        <div class="container my-4">
+        <div class="container my-4 mx-auto">
             <!-- imagem do perfil -->
             <h1 style="font-size: 25px;" class="my-4">Foto do perfil:</h1>
             <div class="text-center my-4">
@@ -42,7 +43,7 @@
             <!-- teste 1 -->
             <p id="info-mar">Quando você olha para algo e vê que está tudo bem.</p>
             <p>Passe o mouse ou clique com o dedo para ativar.</p>
-            <img id="tubarao" src="mar.jpg" alt="" onmouseover="passarMouse()" onmouseout="tirarMouse()" style="max-width:400px;">
+            <img id="tubarao" src="mar.jpg" alt="" onmouseover="passarMouse()" onmouseout="tirarMouse()" class="img-fluid">
             <script type="text/javascript">
                 function passarMouse(){
                     document.getElementById('tubarao').src = 'tubarao_mar.jpg';
@@ -54,11 +55,110 @@
                 }
             </script>
             <!-- teste 2 -->
-            
-            <!-- teste 3 -->
-            <div>
+            <div id='teste2' class="py-5 my-5 px-2">
                 
+                <h1 class="text-center text-white">Hora do dia</h1>
+                <div id="area_hora_mais_imagem" class="py-5 my-5 mx-auto">
+                    <div id='horaDia' class="text-center py-3"></div>
+                    <!-- imagem que representa a hora do dia -->
+                    <div id="statusDiaImagem" class="mx-auto"></div>
+                </div>
+                
+                <script>
+                    var agora = new Date()
+                    var hora = agora.getHours()
+                    document.getElementById('horaDia').innerText = `Agora são ${hora} horas.`
+                    var imagem = document.getElementById('statusDiaImagem')
+                    var fundo = document.getElementById('teste2');
+            
+                    if( hora == 1 || hora < 6 ){
+                        document.getElementById('horaDia').innerText = `Agora é ${hora} hora.`
+                        imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/noite.jpg)";
+                        fundo.style.backgroundColor = '#191B30';
+                    }else if( hora < 12  ){
+                        imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/manha.jpg)";
+                        fundo.style.backgroundColor = '#CBBA8D';
+                    }else if( hora <= 18 ){
+                        imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/tarde.jpg)";            
+                        fundo.style.backgroundColor = '#83B5D7';
+                    }else{
+                        imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/noite.jpg)";
+                        fundo.style.backgroundColor = '#191B30';
+                    }
+            
+                </script>
             </div>
+            <!-- teste 3 -->
+            <div style="background-color: #3E84D9;" class="p-2">
+                <div style="max-width: 600px;margin: auto;" class="py-5">
+                    <h1 style="color: white;text-align: center;">Verificador de idade</h1>
+                    <div id="rentagulo_branco">
+                        <div class="form">
+                            Ano de nascimento: <input type="number" id="ano_nascimento">
+                        </div>
+                        <div class="form">
+                            Sexo:
+                            <label for="sexoM">Masculino</label> <input type="radio" name="pSexo" id="sexoM" value='M' checked>
+                            <label for="sexoF">Feminino</label> <input type="radio" name="pSexo" id="sexoF" value='F'>
+                        </div>
+                        <div class="form text-center">
+                            <button id="btnCalcula">Verificar</button>
+                        </div>
+                        <div>
+                            <p id="descricaoPessoa">Preencha os dados acima para ver o resultado!</p>
+                            <div id="fotoPessoa"> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>.
+            </div>
+            <script>
+                var btnCalcula = document.getElementById('btnCalcula');
+                btnCalcula.onclick = function calculaIdade(){
+                    // pegando respostas do usuário
+                    var ano = new Date()
+                    var ano_atual = ano.getFullYear()
+                    var idade = ano_atual - document.getElementById('ano_nascimento').value
+                    var sexo = document.querySelector('input[name="pSexo"]:checked').value;
+                    //pegando as referências dos campos que vão ser alterados
+                    var descricao = document.getElementById('descricaoPessoa');
+                    var fotoPessoa = document.getElementById('fotoPessoa');
+                    //filtrando o resultado
+                    if( document.getElementById('ano_nascimento').value > ano.getFullYear() || document.getElementById('ano_nascimento').value == '' ){
+                        alert(`Ano inserido invalido ${document.getElementById('ano_nascimento').value}`);
+                    }else{
+                        fotoPessoa.style.width = '250px';
+                        fotoPessoa.style.height = '250px';
+                        if( idade == 0 ){
+                        descricao.innerText = 'Você é um bebê.'
+                        fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/bebe.jpg)'
+                        }
+                        else if( idade < 24 ){
+                            if(sexo == 'M' ){
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/homem-adolescente.jpg)'
+                            }else{  
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/mulher-adolescente.jpg)'
+                            }
+                            descricao.innerText = 'Você é um adolescente ou está perto de ser.'
+                        }else if( idade < 59 ){
+                            if(sexo == 'M' ){
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/homem-adulto.jpg)'
+                            }else{  
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/mulher-adulta.jpg)'
+                            }
+                            descricao.innerText = 'Você é um adulto.'
+                        }else{
+                            if(sexo == 'M' ){
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/idoso.jpg)'
+                            }else{
+                                fotoPessoa.style.backgroundImage = 'url(assets/imagens/exerc-idade/idosa.jpg)'
+                            }   
+                            descricao.innerText = 'Você passou dos 59 aproveita para investir em você.'
+                        }
+                    }   
+                }
+            </script>
 
         </div>
     </body>
