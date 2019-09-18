@@ -18,10 +18,10 @@
             <!-- imagem do perfil -->
             <h1 style="font-size: 25px;" class="my-4">Foto do perfil:</h1>
             <div class="text-center my-4">
-                <img src="foto-perfil.jfif" alt="" style="width: 200px;border-radius: 10px;">
+                <img src="foto-perfil.jpg" alt="" style="width: 200px;border-radius: 10px;">
             </div>
             <hr>
-            <!-- informações  -->
+            <!-- apresentação -->
             <h1  style="font-size: 25px;" class="my-4">Descrição:</h1>
             <p class="text-justify my-4">
                 Sou esse cara ai de cima sem photoshop("por enquanto"), meu nome é Felipy. Estou desenvolvendo está página aos poucos com o objetivo de mostrar o meu trabalho. Atualmente ela está simples foi criada no meu aprendizado em como utilizar o git e o github, mas tenho projetos em mente logo logo serão implementados, com Javascript e jQuery.
@@ -36,13 +36,13 @@
                 <img src="github.png" alt="" style="width: 30px;">&nbsp;&nbsp;felipyc
             </a>      
             <hr>
+
             <!-- area de teste -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
             <h1 style="font-size: 25px" class="my-4">Área de teste:</h1>
             <!-- teste 1 -->
-            <div class="w-100" style="height: 300px;background-image: url(mario_cenario.gif);background-repeat: no-repeat;">
-
-            </div>
-            <!-- teste 2 -->
+            <p id="info-mar">Quando você olha para algo e vê que está tudo bem.</p>
+            <p>Passe o mouse ou clique com o dedo para ativar.</p>
+            <img id="tubarao" src="mar.jpg" alt="" onmouseover="passarMouse()" onmouseout="tirarMouse()" style="max-width:400px;">
             <script type="text/javascript">
                 function passarMouse(){
                     document.getElementById('tubarao').src = 'tubarao_mar.jpg';
@@ -53,10 +53,12 @@
                     document.getElementById('info-mar').innerHTML = "Quando você olha para algo e vê que está tudo bem.";
                 }
             </script>
-            <p id="info-mar">Quando você olha para algo e vê que está tudo bem.</p>
-            <p>Passe o mouse ou clique com o dedo para ativar.</p>
-            <img id="tubarao" src="mar.jpg" alt="" onmouseover="passarMouse()" onmouseout="tirarMouse()" style="width: 100%;">
+            <!-- teste 2 -->
+            
             <!-- teste 3 -->
+            <div>
+                
+            </div>
 
         </div>
     </body>
