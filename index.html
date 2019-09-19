@@ -159,7 +159,73 @@
                     }   
                 }
             </script>
-
+            <!-- teste 4 -->
+            <div style="background-color: rgb(157, 197, 223);" class="my-5 py-2">
+                <header>
+                    <h1 style="color: white; font-family: Arial;text-align:center;  ">Vamos contar</h1>
+                </header>
+                <section class="bg-white m-2 p-2 text-center" style="border-radius: 5px;">
+                    <div class="my-2">
+                        <label for="">Inicio:</label><br>
+                        <input type="number" name="" id="inicio">
+                    </div>
+                    <div class="my-2">
+                        <label for="">Fim: </label><br> 
+                        <input type="number" name="" id="fim">
+                    </div class="my-2">
+                    <div class="my-2">
+                        <label for="">Passo: </label><br>
+                        <input type="number" name="" id="passo">
+                    </div>
+                    <div class="text-center my-2">
+                        <button class="btn btn-primary" id="btnConta">Contar</button>
+                    </div>
+                    <div>
+                        <p class="alert alert-light" id="resultado">
+                            Preparando a contagem...
+                        </p>
+                    </div>
+                </section>
+                <footer class="text-center p-2">
+                    &#64;Felipy
+                </footer>
+                <script>
+                    //script pulo
+        
+                    document.getElementById("btnConta").addEventListener("click", conta)
+        
+                    function conta(){
+                        //inicio
+                        var inicio = Number(document.getElementById('inicio').value)
+        
+                        //fim
+                        var fim = Number(document.getElementById('fim').value)
+        
+                        //passo
+                        var passo = Number(document.getElementById('passo').value)
+        
+                        //resultado
+                        var resultado = document.getElementById('resultado')
+                        
+                        //contador
+                        if( inicio < 0 || fim < 0  || passo < 1 ){
+                            alert('Impossível contar.')
+                        }else{
+                            resultado.innerText = ''
+                            for(  ; inicio <= fim ; inicio = inicio + passo ){
+                                var novoTexto = document.createElement('span')
+                                if( inicio >= fim){
+                                    novoTexto.innerHTML = inicio
+                                }else{
+                                    novoTexto.innerHTML = inicio + '&nbsp; &#128073;&#127999; &nbsp;'
+                                }               
+                                resultado.appendChild(novoTexto)
+                                
+                            }
+                        }
+                    }
+                </script>
+            </div>            
         </div>
     </body>
 </html>
