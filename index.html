@@ -225,7 +225,53 @@
                         }
                     }
                 </script>
-            </div>            
+            </div>      
+            <!-- teste 5 -->      
+            <div style="background-color: rgb(157, 197, 223);">
+                <header>
+                    <h1 style="color: white; font-family: Arial;text-align:center;  ">Vamos contar</h1>
+                </header>
+                <section class="bg-white m-2 p-2 text-center" style="border-radius: 5px;">
+                    <div class="my-2">
+                        <label for="numero">Número</label><br> 
+                        <input type="number" name="" id="numeroTabuada"> 
+                        <button class="btn btn-primary" id="btnContador">Calcular</button>
+                    </div>
+                    <div>
+                        <select class="custom-select text-center" id="resultado-contador" style="display: none;" size="10"> 
+                            
+                        </select>
+                    </div>
+                </section>
+                <footer class="text-center p-2">
+                    &#64;Felipy
+                </footer>
+                <script>
+                    //script pulo
+        
+                    document.getElementById("btnContador").addEventListener("click", conta)
+        
+                    function conta(){
+                        //numero da tabuada
+                        var numeroTabuada = Number(document.getElementById('numeroTabuada').value)
+                        //resultado
+                        var resultado = document.getElementById('resultado-contador')
+                        //contador
+                        if( numeroTabuada < 0 || numeroTabuada == '' ){
+                            alert('Por favor, digite um número')
+                        }else{
+                            resultado.style.display = 'inline-block'
+                            resultado.innerHTML = ''
+                            for( var c = 1 ; c <= 10 ; c++ ){
+                                var option = document.createElement('option')
+                                var text = document.createTextNode(` ${c} x ${numeroTabuada} = ` + c * numeroTabuada)
+                                option.appendChild(text)
+                                resultado.appendChild(option)
+                            }
+                        }
+                    }
+                </script>
+            </div>
         </div>
     </body>
 </html>
