@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+</head>
+<body>
+    <div class="my-5">
+        <h1 class="text-center">Script atalhos</h1>
+    </div>
+    <div class="container p-0">
+        <!-- cards -->
+        <style>
+            /*
+            Área cards
+            */
+            .cards_atalhos_cripts{
+                width: 300px;
+                min-height: 260px;
+                flex: none !important;
+                margin: 20px auto;
+                position: relative;
+            }
+            .div_botao_responsivo_scripts_atalho{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 100px;
+                width: 100%;
+                line-height: 100px;
+            }
+            .card-text{
+                text-align: justify;
+            }
+        </style>
+        <div class="card-deck justify-content-center">
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Mar</h5>
+                    <p class="card-text">
+                        Mostra algo ao passar o mouse por cima ou clicar na imagem no mobile.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho" >
+                        <a href="#corFundoHoraDoDia" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Hora do dia</h5>
+                    <p class="card-text">
+                        Mostra imagem com base na hora do dia.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Qual sua idade?</h5>
+                    <p class="card-text">
+                        Qual estágio você está com base na sua idade.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>            
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Contador</h5>
+                    <p class="card-text">
+                        Conta até certo número e pode escolher o pulo. Apenas números positivos.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Tabuada</h5>
+                    <p class="card-text">
+                        Mostra a tabuada de um número até 10.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Analisador de números</h5>
+                    <p class="card-text">
+                        Analisa os números passados mostrando a quantidade, o maior, o menor, a soma e a média ao clicar no botão finalizar.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end cards -->
+        <!-- scripts -->
+        <style>
+            /*
+                Área scripts individuais
+            */
+            .fundo_script{
+                margin: 10px 0;
+                padding: 30px 5px;
+                border-radius: 10px;    
+            }
+        </style>
+        <div class="my-5">
+            <h1 class="text-center">Scripts</h1>
+        </div>
+        <div class="fundo_script" id='corFundoHoraDoDia'><!-- script 1 -->
+            <h1 class="text-center text-light" style="text-shadow:black 0px 2px;">Hora do dia</h1>
+            <div id='horaDia' class="text-center py-3 text-light"  style="font-size: 16pt;text-shadow:black 0px 2px;"></div>
+            <style>
+                #statusDiaImagem{
+                    width: 280px;
+                    height: 280px;
+                    margin: auto;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    border-radius: 50%;
+                }
+            </style>
+            <div style="background-color: white; max-width: 400px;margin: auto; border-radius: 5px; padding: 20px 10px;">
+                <div id="statusDiaImagem" class="mx-auto"></div>    
+            </div>
+            <script>
+                //pegando as horas e mostrando
+                var agora = new Date()
+                var hora = agora.getHours()
+                hora = 19
+                document.getElementById('horaDia').innerHTML = `Agora são ${hora} horas.`
+                //mudança de fundo e imagem
+                var fundo = document.getElementById('corFundoHoraDoDia');
+                var imagem = document.getElementById('statusDiaImagem')
+                if( hora > 18 || hora < 6 ){
+                    document.getElementById('horaDia').innerHTML = `Agora ${hora == 1 || hora == 0 ?'é':'são'} ${hora} ${hora == 1 || hora == 0?'hora':'horas'}.`
+                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/noite.jpg)";
+                    fundo.style.backgroundColor = '#191B30';
+                }else if( hora < 12  ){
+                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/manha.jpg)";
+                    fundo.style.backgroundColor = '#FED3A6';
+                }else if( hora <= 18 ){
+                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/tarde.jpg)";            
+                    fundo.style.backgroundColor = '#36C2ED';
+                }
+            </script>
+        </div><!-- end script 1 -->
+        <div class="fundo_script"><!-- script 2 -->
+            <div class="my-5">
+                <h1 class="text-center">Verificador de idade</h1>
+            </div>
+            <div class="script">
+                
+            </div>
+        </div><!-- end script 2 -->
+        <!-- end scripts -->
+    </div> 
+    
+    <script>
+        
+    </script>
+</body>
+</html>
