@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="estilo.css">
     <title>Document</title>
 </head>
 <body>
@@ -118,7 +119,9 @@
         <div class="my-5">
             <h1 class="text-center">Scripts</h1>
         </div>
-        <div class="fundo_script" id='corFundoHoraDoDia'><!-- script 1 -->
+
+        <!-- HORA DO DIA -->
+        <div class="fundo_script" id='corFundoHoraDoDia'>
             <h1 class="text-center text-light" style="text-shadow:black 0px 2px;">Hora do dia</h1>
             <div id='horaDia' class="text-center py-3 text-light"  style="font-size: 16pt;text-shadow:black 0px 2px;"></div>
             <style>
@@ -134,37 +137,50 @@
             <div style="background-color: white; max-width: 400px;margin: auto; border-radius: 5px; padding: 20px 10px;">
                 <div id="statusDiaImagem" class="mx-auto"></div>    
             </div>
-            <script>
-                //pegando as horas e mostrando
-                var agora = new Date()
-                var hora = agora.getHours()
-                hora = 19
-                document.getElementById('horaDia').innerHTML = `Agora são ${hora} horas.`
-                //mudança de fundo e imagem
-                var fundo = document.getElementById('corFundoHoraDoDia');
-                var imagem = document.getElementById('statusDiaImagem')
-                if( hora > 18 || hora < 6 ){
-                    document.getElementById('horaDia').innerHTML = `Agora ${hora == 1 || hora == 0 ?'é':'são'} ${hora} ${hora == 1 || hora == 0?'hora':'horas'}.`
-                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/noite.jpg)";
-                    fundo.style.backgroundColor = '#191B30';
-                }else if( hora < 12  ){
-                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/manha.jpg)";
-                    fundo.style.backgroundColor = '#FED3A6';
-                }else if( hora <= 18 ){
-                    imagem.style.backgroundImage = "url(assets/imagens/exerc-hora-do-dia/tarde.jpg)";            
-                    fundo.style.backgroundColor = '#36C2ED';
-                }
+            <script src='assets/scripts/hora-do-dia.js'>
             </script>
-        </div><!-- end script 1 -->
-        <div class="fundo_script"><!-- script 2 -->
+        </div><!-- END HORA DO DIA -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+        <!-- VERIFICADOR DE IDADE -->
+        <div class="fundo_script">
             <div class="my-5">
                 <h1 class="text-center">Verificador de idade</h1>
             </div>
             <div class="script">
                 
             </div>
-        </div><!-- end script 2 -->
-        <!-- end scripts -->
+        </div>
+        <div style="background-color: #3E84D9;" class="p-2">
+            <div style="max-width: 600px;margin: auto;" class="py-5">
+                <h1 style="color: white;text-align: center;">Verificador de idade</h1>
+                <div id="rentagulo_branco">
+                    <div class="form">
+                        Ano de nascimento: <input type="number" id="ano_nascimento">
+                    </div>
+                    <div class="form">
+                        Sexo:
+                        <label for="sexoM">Masculino</label> <input type="radio" name="pSexo" id="sexoM" value='M' checked>
+                        <label for="sexoF">Feminino</label> <input type="radio" name="pSexo" id="sexoF" value='F'>
+                    </div>
+                    <div class="form text-center">
+                        <button id="btnCalcula">Verificar</button>
+                    </div>
+                    <div>
+                        <p id="descricaoPessoa">Preencha os dados acima para ver o resultado!</p>
+                        <div id="fotoPessoa"> 
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>.
+        </div>
+        <script src='assets/scripts/verificador-de-idade.js'></script><!-- END VERIFICADOR DE IDADE -->
+        
+        
+
+        
     </div> 
     
     <script>
