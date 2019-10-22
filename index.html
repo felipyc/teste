@@ -9,34 +9,34 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="my-5">
-        <h1 class="text-center">Script atalhos</h1>
-    </div>
-    <div class="container p-0">
+    <div class="container p-2">
+        
+        <!-- imagem do perfil -->
+        <h1 style="font-size: 25px;" class="my-4">Foto do perfil:</h1>
+        <div class="text-center my-4">
+            <img src="foto-perfil.jpg" alt="" style="width: 200px;border-radius: 10px;">
+        </div>
+        <hr>
+        <!-- apresentação -->
+        <h1  style="font-size: 25px;" class="my-4">Descrição:</h1>
+        <p class="text-justify my-4">
+            Sou esse cara ai de cima sem photoshop("por enquanto"), meu nome é Felipy. Estou desenvolvendo está página aos poucos com o objetivo de mostrar o meu trabalho. Atualmente ela está simples foi criada no meu aprendizado em como utilizar o git e o github, mas tenho projetos em mente logo logo serão implementados, com Javascript.
+        </p>
+        <hr>
+        <!-- formas de entrar em contato -->
+        <h1 style="font-size: 25px;" class="my-4">Aonde você pode entrar em contato comigo, ver minha trajetória e até olhar meu código:</h1>
+        <a href="https://www.linkedin.com/in/felipycamargo/" class="d-flex  align-items-center text-decoration-none my-4"> 
+            <img src="linkedin.png" alt="" style="width: 30px;">&nbsp;&nbsp;Linkedin
+        </a>
+        <a href="https://github.com/felipyc" class="d-flex align-items-center text-decoration-none my-4">
+            <img src="github.png" alt="" style="width: 30px;">&nbsp;&nbsp;felipyc
+        </a>
+        
+        <div class="my-5">
+            <h1 class="text-center">Script atalhos</h1>
+        </div>
+
         <!-- cards -->
-        <style>
-            /*
-            Área cards
-            */
-            .cards_atalhos_cripts{
-                width: 300px;
-                min-height: 260px;
-                flex: none !important;
-                margin: 20px auto;
-                position: relative;
-            }
-            .div_botao_responsivo_scripts_atalho{
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                height: 100px;
-                width: 100%;
-                line-height: 100px;
-            }
-            .card-text{
-                text-align: justify;
-            }
-        </style>
         <div class="card-deck justify-content-center">
             <div class="card cards_atalhos_cripts">
                 <div  class="card-body">
@@ -45,7 +45,7 @@
                         Mostra algo ao passar o mouse por cima ou clicar na imagem no mobile.
                     </p>
                     <div class="text-center div_botao_responsivo_scripts_atalho" >
-                        <a href="#corFundoHoraDoDia" class="btn btn-primary">Ir até o script</a>
+                        <a href="" class="btn btn-primary">Ir até o script</a>
                     </div>
                 </div>
             </div>
@@ -56,18 +56,18 @@
                         Mostra imagem com base na hora do dia.
                     </p>
                     <div class="text-center div_botao_responsivo_scripts_atalho">
-                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                        <a href="#hora-do-dia-script" class="btn btn-primary">Ir até o script</a>
                     </div>
                 </div>
             </div>
             <div class="card cards_atalhos_cripts">
                 <div  class="card-body">
-                    <h5 class="card-title text-center">Qual sua idade?</h5>
+                    <h5 class="card-title text-center">Qual a sua idade?</h5>
                     <p class="card-text">
-                        Qual estágio você está com base na sua idade.
+                        Qual estágio da vida você está com base na sua idade.
                     </p>
                     <div class="text-center div_botao_responsivo_scripts_atalho">
-                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                        <a href="#qual-sua-idade-script" class="btn btn-primary">Ir até o script</a>
                     </div>
                 </div>
             </div>            
@@ -105,86 +105,74 @@
                 </div>
             </div>
         </div> <!-- end cards -->
-        <!-- scripts -->
-        <style>
-            /*
-                Área scripts individuais
-            */
-            .fundo_script{
-                margin: 10px 0;
-                padding: 30px 5px;
-                border-radius: 10px;    
-            }
-        </style>
+        
+        <!-- -------------------------------------------------------------------------------- -->
+        
+        
         <div class="my-5">
             <h1 class="text-center">Scripts</h1>
         </div>
 
+        <!-- -------------------------------------------------------------------------------- -->
+
         <!-- HORA DO DIA -->
-        <div class="fundo_script" id='corFundoHoraDoDia'>
-            <h1 class="text-center text-light" style="text-shadow:black 0px 2px;">Hora do dia</h1>
-            <div id='horaDia' class="text-center py-3 text-light"  style="font-size: 16pt;text-shadow:black 0px 2px;"></div>
-            <style>
-                #statusDiaImagem{
-                    width: 280px;
-                    height: 280px;
-                    margin: auto;
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    border-radius: 50%;
-                }
-            </style>
-            <div style="background-color: white; max-width: 400px;margin: auto; border-radius: 5px; padding: 20px 10px;">
-                <div id="statusDiaImagem" class="mx-auto"></div>    
+        <div class="area-script-molde" id='hora-do-dia-script'>
+            
+            <div class="mb-5">
+                <h1 class="text-center">Hora do dia</h1>
             </div>
-            <script src='assets/scripts/hora-do-dia.js'>
-            </script>
+            
+            <div id='corFundoHoraDoDia'>
+                <div id='horaDia' class="text-center py-3 text-light"></div>
+                <div id='envolve-status-dia-imagem'>
+                    <div id="statusDiaImagem" class="mx-auto"><div></div></div>    
+                </div>
+            </div>
+            <script src='assets/scripts/hora-do-dia.js'></script>
         </div><!-- END HORA DO DIA -->
         
         <!-- -------------------------------------------------------------------------------- -->
 
         <!-- VERIFICADOR DE IDADE -->
-        <div class="fundo_script">
-            <div class="my-5">
-                <h1 class="text-center">Verificador de idade</h1>
+        <div class="area-script-molde" id='qual-sua-idade-script'>
+            
+            <div class="mb-5">
+                <h1 class="text-center">Qual sua idade?</h1>
             </div>
-            <div class="script">
-                
-            </div>
-        </div>
-        <div style="background-color: #3E84D9;" class="p-2">
-            <div style="max-width: 600px;margin: auto;" class="py-5">
-                <h1 style="color: white;text-align: center;">Verificador de idade</h1>
-                <div id="rentagulo_branco">
-                    <div class="form">
-                        Ano de nascimento: <input type="number" id="ano_nascimento">
-                    </div>
-                    <div class="form">
-                        Sexo:
-                        <label for="sexoM">Masculino</label> <input type="radio" name="pSexo" id="sexoM" value='M' checked>
-                        <label for="sexoF">Feminino</label> <input type="radio" name="pSexo" id="sexoF" value='F'>
-                    </div>
-                    <div class="form text-center">
-                        <button id="btnCalcula">Verificar</button>
-                    </div>
-                    <div>
-                        <p id="descricaoPessoa">Preencha os dados acima para ver o resultado!</p>
-                        <div id="fotoPessoa"> 
-                            
+        
+            <div id='cor-qual-sua-idade'>
+                <div>
+                    <div id="rentagulo_branco">
+                        <div class="form">
+                            Ano de nascimento: <input type="number" id="ano_nascimento">
+                        </div>
+                        <div class="form">
+                            Sexo:
+                            <label for="sexoM">Masculino</label> <input type="radio" name="pSexo" id="sexoM" value='M' checked>
+                            <label for="sexoF">Feminino</label> <input type="radio" name="pSexo" id="sexoF" value='F'>
+                        </div>
+                        <div class="form text-center">
+                            <button id="btnCalcula">Verificar</button>
+                        </div>
+                        <div>
+                            <p id="descricaoPessoa">Preencha os dados acima para ver o resultado!</p>
+                            <div id="fotoPessoa"> 
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>.
-        </div>
-        <script src='assets/scripts/verificador-de-idade.js'></script><!-- END VERIFICADOR DE IDADE -->
+                </div>.
+            </div>
+            <script src='assets/scripts/verificador-de-idade.js'></script>
+        </div><!-- END VERIFICADOR DE IDADE -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+
         
         
 
         
-    </div> 
-    
-    <script>
-        
-    </script>
+    </div>  
 </body>
 </html>
