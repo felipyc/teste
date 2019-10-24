@@ -64,7 +64,10 @@
 
 #cor-qual-sua-idade{
     background-color: #efefef;
+    max-width: 400px;
+    margin: auto;
     padding: 10px;
+    border-radius: 7px;
 }
 
 #rentagulo_branco{
