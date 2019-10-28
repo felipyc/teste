@@ -62,30 +62,52 @@
 
 /* calculador de idade */
 
-#cor-qual-sua-idade{
+    .form{
+        margin: 10px 0;
+    }
+        input#ano_nascimento{
+            border: none;
+            box-shadow: 0 0 5px rgba(0,0,0,.1);
+            padding: 10px;
+        }
+
+    #cor-qual-sua-idade{
+        background-color: #efefef;
+        max-width: 400px;
+        margin: auto;
+        padding: 10px;
+        border-radius: 7px;
+    }
+
+    #rentagulo_branco{
+        padding: 10px;
+        background-color: white;
+        border-radius: 7px;
+    }
+    #descricaoPessoa{
+        font: 15pt Arial;
+        text-align: center;
+    }
+    #fotoPessoa{
+        margin: 20px auto;
+        border-radius: 50%;
+        background-image: url("");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+/* Contador */
+#contador-script{
     background-color: #efefef;
     max-width: 400px;
     margin: auto;
     padding: 10px;
     border-radius: 7px;
 }
+    #rentagulo-branco-contador{
+        text-align: center;
+        padding: 10px;
+        background-color: white;
+        border-radius: 7px;
+    }
 
-#rentagulo_branco{
-    padding: 10px;
-    background-color: white;
-    border-radius: 7px;
-}
-#descricaoPessoa{
-    font: 15pt Arial;
-    text-align: center;
-}
-#fotoPessoa{
-    margin: 20px auto;
-    border-radius: 50%;
-    background-image: url("");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-.form{
-    margin: 10px 0;
-}

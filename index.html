@@ -11,19 +11,19 @@
 <body>
     <div class="container p-2">
         
-        <!-- imagem do perfil -->
+        <!-- IMAGEM DO PERFIL -->
         <h1 style="font-size: 25px;" class="my-4">Foto do perfil:</h1>
         <div class="text-center my-4">
             <img src="foto-perfil.jpg" alt="" style="width: 200px;border-radius: 10px;">
         </div>
         <hr>
-        <!-- apresentação -->
+        <!-- APRESENTAÇÃO -->
         <h1  style="font-size: 25px;" class="my-4">Descrição:</h1>
         <p class="text-justify my-4">
             Sou esse cara ai de cima sem photoshop("por enquanto"), meu nome é Felipy. Estou desenvolvendo está página aos poucos com o objetivo de mostrar o meu trabalho. Atualmente ela está simples foi criada no meu aprendizado em como utilizar o git e o github, mas tenho projetos em mente logo logo serão implementados, com Javascript.
         </p>
         <hr>
-        <!-- formas de entrar em contato -->
+        <!-- FORMAS DE ENTRAR EM CONTATO -->
         <h1 style="font-size: 25px;" class="my-4">Aonde você pode entrar em contato comigo, ver minha trajetória e até olhar meu código:</h1>
         <a href="https://www.linkedin.com/in/felipycamargo/" class="d-flex  align-items-center text-decoration-none my-4"> 
             <img src="linkedin.png" alt="" style="width: 30px;">&nbsp;&nbsp;Linkedin
@@ -36,7 +36,7 @@
             <h1 class="text-center">Script atalhos</h1>
         </div>
 
-        <!-- cards -->
+        <!-- CARDS -->
         <div class="card-deck justify-content-center">
             <div class="card cards_atalhos_cripts">
                 <div  class="card-body">
@@ -104,7 +104,7 @@
                     </div>
                 </div>
             </div>
-        </div> <!-- end cards -->
+        </div> <!-- END CARDS -->
         
         <!-- -------------------------------------------------------------------------------- -->
         
@@ -169,7 +169,39 @@
         
         <!-- -------------------------------------------------------------------------------- -->
 
+        <!-- VAMOS CONTAR -->
+        
+        <div class="area-script-molde">
 
+            <div class="mb-5">
+                <h1 class="text-center">Contador?</h1>
+            </div>
+            <div id='contador-script'>
+                <div id="rentagulo-branco-contador">
+                        <div class="my-2">
+                            <label for="">Inicio:</label><br>
+                            <input type="number" name="" id="inicio">
+                        </div>
+                        <div class="my-2">
+                            <label for="">Fim: </label><br> 
+                            <input type="number" name="" id="fim">
+                        </div class="my-2">
+                        <div class="my-2">
+                            <label for="">Passo: </label><br>
+                            <input type="number" name="" id="passo">
+                        </div>
+                        <div class="text-center my-2">
+                            <button class="btn btn-primary" id="btnConta">Contar</button>
+                        </div>
+                        <div>
+                            <p class="alert alert-light" id="resultado">
+                                Preparando a contagem...
+                            </p>
+                        </div>
+                    </div>
+            </div>
+            <script src='assets/scripts/contador.js'></script>
+        </div><!-- END VAMOS CONTAR -->
         
         
 
