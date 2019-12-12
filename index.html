@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container p-2">
+        
+        <!-- IMAGEM DO PERFIL -->
+        <h1 style="font-size: 25px;" class="my-4">Foto do perfil:</h1>
+        <div class="text-center my-4">
+            <img src="foto-perfil.jpg" alt="" style="width: 200px;border-radius: 10px;">
+        </div>
+        <hr>
+        <!-- APRESENTAÇÃO -->
+        <h1  style="font-size: 25px;" class="my-4">Descrição:</h1>
+        <p class="text-justify my-4">
+            Sou esse cara ai de cima sem photoshop("por enquanto"), meu nome é Felipy. Estou desenvolvendo está página aos poucos com o objetivo de mostrar o meu trabalho. Atualmente ela está simples foi criada no meu aprendizado em como utilizar o git e o github, mas tenho projetos em mente logo logo serão implementados, com Javascript.
+        </p>
+        <hr>
+        <!-- FORMAS DE ENTRAR EM CONTATO -->
+        <h1 style="font-size: 25px;" class="my-4">Aonde você pode entrar em contato comigo, ver minha trajetória e até olhar meu código:</h1>
+        <a href="https://www.linkedin.com/in/felipycamargo/" class="d-flex  align-items-center text-decoration-none my-4"> 
+            <img src="linkedin.png" alt="" style="width: 30px;">&nbsp;&nbsp;Linkedin
+        </a>
+        <a href="https://github.com/felipyc" class="d-flex align-items-center text-decoration-none my-4">
+            <img src="github.png" alt="" style="width: 30px;">&nbsp;&nbsp;felipyc
+        </a>
+        
+        <div class="my-5">
+            <h1 class="text-center">Script atalhos</h1>
+        </div>
+
+        <!-- CARDS -->
+        <div class="card-deck justify-content-center">
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Mar</h5>
+                    <p class="card-text">
+                        Mostra algo ao passar o mouse por cima ou clicar na imagem no mobile.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho" >
+                        <a href="" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Hora do dia</h5>
+                    <p class="card-text">
+                        Mostra imagem com base na hora do dia.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#hora-do-dia-script" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Qual a sua idade?</h5>
+                    <p class="card-text">
+                        Qual estágio da vida você está com base na sua idade.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#qual-sua-idade-script" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>            
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Contador</h5>
+                    <p class="card-text">
+                        Conta até certo número e pode escolher o pulo. Apenas números positivos.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#contador-script" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Tabuada</h5>
+                    <p class="card-text">
+                        Mostra a tabuada de um número até 10.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#tabuada-script" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card cards_atalhos_cripts">
+                <div  class="card-body">
+                    <h5 class="card-title text-center">Analisador de números</h5>
+                    <p class="card-text">
+                        Analisa os números passados mostrando a quantidade, o maior, o menor, a soma e a média ao clicar no botão finalizar.
+                    </p>
+                    <div class="text-center div_botao_responsivo_scripts_atalho">
+                        <a href="#" class="btn btn-primary">Ir até o script</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- END CARDS -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+        
+        
+        <div class="my-5">
+            <h1 class="text-center">Scripts</h1>
+        </div>
+
+        <!-- -------------------------------------------------------------------------------- -->
+
+        <!-- HORA DO DIA -->
+        <div class="area-script-molde" id='hora-do-dia-script'>
+            
+            <div class="mb-5">
+                <h1 class="text-center">Hora do dia</h1>
+            </div>
+            
+            <div id='corFundoHoraDoDia'>
+                <div id='horaDia' class="text-center py-3 text-light"></div>
+                <div id='envolve-status-dia-imagem'>
+                    <div id="statusDiaImagem" class="mx-auto"><div></div></div>    
+                </div>
+            </div>
+            <script src='assets/scripts/hora-do-dia.js'></script>
+        </div><!-- END HORA DO DIA -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+        <!-- VERIFICADOR DE IDADE -->
+        <div class="area-script-molde" id='qual-sua-idade-script'>
+            
+            <div class="mb-5">
+                <h1 class="text-center">Qual sua idade?</h1>
+            </div>
+        
+            <div id='cor-qual-sua-idade'>
+                <div id="rentagulo_branco">
+                    <div class="form text-center">
+                        Ano de nascimento:<br/>
+                        <input type="number" id="ano_nascimento">
+                    </div>
+                    <div class="form text-center">
+                        Sexo:<br/>
+                        <label for="sexoM">Masculino</label>
+                            <input type="radio" name="pSexo" id="sexoM" value='M' checked>
+                        <label for="sexoF">Feminino</label>
+                            <input type="radio" name="pSexo" id="sexoF" value='F'>
+                    </div>
+                    <div class="form text-center">
+                        <button id="btnCalcula" class='btn btn-primary'>Verificar</button>
+                    </div>
+                    <div>
+                        <p id="descricaoPessoa">Preencha os dados acima para ver o resultado!</p>
+                        <div id="fotoPessoa"> 
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src='assets/scripts/verificador-de-idade.js'></script>
+        </div><!-- END VERIFICADOR DE IDADE -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+        <!-- VAMOS CONTAR -->
+        
+        <div class="area-script-molde">
+
+            <div class="mb-5">
+                <h1 class="text-center">Contador?</h1>
+            </div>
+            <div  id='contador-script'>
+                <div id="rentagulo-branco-contador">
+                        <div class="my-2">
+                            <label for="">Inicio:</label><br>
+                            <input type="number" name="" id="inicio">
+                        </div>
+                        <div class="my-2">
+                            <label for="">Fim: </label><br> 
+                            <input type="number" name="" id="fim">
+                        </div class="my-2">
+                        <div class="my-2">
+                            <label for="">Passo: </label><br>
+                            <input type="number" name="" id="passo">
+                        </div>
+                        <div class="text-center my-2">
+                            <button class="btn btn-primary" id="btnConta">Contar</button>
+                        </div>
+                        <div>
+                            <p class="alert alert-light" id="resultado">
+                                Preparando a contagem...
+                            </p>
+                        </div>
+                    </div>
+            </div>
+            <script src='assets/scripts/contador.js'></script>
+        </div><!-- END VAMOS CONTAR -->
+        
+        <!-- -------------------------------------------------------------------------------- -->
+
+        <!-- TABUADA -->
+        
+        <div class="area-script-molde" id='tabuada-script'>
+
+            <div class="mb-5">
+                <h1 class="text-center">Tabuada de um número?</h1>
+            </div>
+            <div  id='contador-script'>
+                <section class="bg-white m-2 p-2 text-center" style="border-radius: 5px;">
+                    <div class="my-2">
+                        <label for="numero">Número</label><br> 
+                        <input type="number" name="" id="numeroTabuada"> 
+                    </div>
+                    <div class="my-2">
+                        <button class="btn btn-primary" id="btnContador">Calcular</button>
+                    </div>
+                    <div>
+                        <select class="custom-select text-center" id="resultado-contador" style="display: none;" size="10"> 
+                            
+                        </select>
+                    </div>
+                </section>
+            </div>
+            <script src='assets/scripts/tabuada.js'></script>
+        </div><!-- END VAMOS CONTAR -->
+
+        
+    </div>  
+</body>
+</html>
