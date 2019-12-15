@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.arquivos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 50px;
+
+    padding: 10px;
+
+    background-color: red;
+}
+
+.container-cards{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-radius: 5px;
+    margin: 5px;
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    background-color: red;
+    background-image: url("_imagens/frente-card.png");
+}
+
+.card-frente{
+    animation: cardFrente 1s forwards;
+    
+    
+}
+
+.card-verso{
+    animation: cardVerso 1s forwards;
+    
+}
+
+@keyframes cardFrente{
+    from{
+        opacity: 0;
+        transform: rotate3d(0,1,0, 180deg);
+        background-color: green;
+    }
+    to{
+        opacity: 1;
+        transform: rotate3d(0,1,0, 0deg);
+        background-color: red;
+        background-image: url("_imagens/frente-card.png");
+    }
+}
+
+@keyframes cardVerso{
+    from{
+        opacity: 0;
+        transform: rotate3d(0,1,0, 0deg);
+        background-color: red;
+    }
+    to{
+        opacity: 1;
+        transform: rotate3d(0,1,0, 180deg);
+        background-color: green;
+    }
+}
+
+
+
