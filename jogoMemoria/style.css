@@ -37,7 +37,7 @@
     background-repeat: no-repeat;
 
     background-color: red;
-    background-image: url("imagens/frente-card.png");
+    background-image: url("./imagens/frente-card.png");
 }
 
 .card-frente{
@@ -56,13 +56,12 @@
         opacity: 0;
         transform: rotate3d(0,1,0, 180deg);
         background-color: green;
-        background-image: url("imagens/frente-card.png");
     }
     to{
         opacity: 1;
         transform: rotate3d(0,1,0, 0deg);
         background-color: red;
-        background-image: url("imagens/frente-card.png");
+        background-image: url("./imagens/frente-card.png");
     }
 }
 
