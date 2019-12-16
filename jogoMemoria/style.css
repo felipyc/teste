@@ -1,22 +1,78 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-.arquivos{
+
+
+
+
+.container-lobby-jogo{
+    width: 100vw;
+    height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
-    min-height: 50px;
+    background-color: black;
+    color: #00b8ff;
+}
 
+.titulo-game{
+    font-size: 35px;
+    color: white;
+}
+
+.container-lobby-jogo > *{
+    margin-bottom: 10px;    
     padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
 
-    background-color: red;
+.container-lobby-jogo > *:hover{
+    color: yellow;
 }
 
 #imagens{
     display: none;
+}
+
+
+
+
+
+
+
+.container-jogo{
+    display: none;
+}
+
+.painel-informativo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+.info-perder-ou-ganhar-jogo{
+    width: 100vw;
+    height: 100vh;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    background-color: black;
 }
 
 .container-cards{
@@ -40,19 +96,16 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    box-shadow: 0 0 5px rgba(0,0,0,.3);
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
     background-image: url("./imagens/frente-card.png");
 }
 
 .card-frente{
     animation: cardFrente 1s forwards;
-    
-    
 }
 
 .card-verso{
     animation: cardVerso 1s forwards;
-    
 }
 
 @keyframes cardFrente{
