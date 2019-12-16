@@ -15,6 +15,10 @@
     background-color: red;
 }
 
+#imagens{
+    display: none;
+}
+
 .container-cards{
     display: flex;
     justify-content: flex-start;
@@ -23,8 +27,8 @@
 }
 
 .card{
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 200px;
 
     display: flex;
     justify-content: flex-start;
@@ -33,10 +37,10 @@
     border-radius: 5px;
     margin: 5px;
 
-    background-size: 100% 100%;
     background-repeat: no-repeat;
-
-    background-color: red;
+    background-size: contain;
+    background-position: center;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
     background-image: url("./imagens/frente-card.png");
 }
 
@@ -55,12 +59,10 @@
     from{
         opacity: 0;
         transform: rotate3d(0,1,0, 180deg);
-        background-color: green;
     }
     to{
         opacity: 1;
         transform: rotate3d(0,1,0, 0deg);
-        background-color: red;
         background-image: url("./imagens/frente-card.png");
     }
 }
@@ -69,7 +71,6 @@
     from{
         opacity: 0;
         transform: rotate3d(0,1,0, 0deg);
-        background-color: red;
     }
     to{
         opacity: 1;
