@@ -6,37 +6,144 @@
 
 const containerJogo = document.querySelector('.container-jogo');
 const containerCards = document.querySelector('.container-cards');
-const containerLobbyJogo = document.querySelector('.container-lobby-jogo');
-const botaoIniciaJogo = document.querySelector('.iniciar-jogo');
-const componentTentativas = document.querySelector('.tentativas');
-const infoPerderOuGanharJogo = document.querySelector('.info-perder-ou-ganhar-jogo');
-let tentativas;
-
-botaoIniciaJogo.addEventListener('click', function(){
-  containerLobbyJogo.style.display = 'none';
-  containerJogo.style.display = 'block';
-  iniciaJogo();
-});
-
 
 const iniciaJogo = () => {
 
-  const input = document.getElementById('imagens');
-  input.addEventListener('change', handleFileSelect, false);
-  let imagensDefaultSendoUsadas = false;
-  let cardsViradosAcertados = {};
+  // const input = document.getElementById('imagens');
+  // input.addEventListener('change', handleFileSelect, false);
 
-  function verificaCardViradoEIgual(card1MostrandoVerso = '', card2MostrandoVerso = ''){
-    if( card1MostrandoVerso.style.backgroundImage === card2MostrandoVerso.style.backgroundImage ){
-      if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage]){
-        cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] = true;
-        card1MostrandoVerso.style.boxShadow = 'none';
-        card2MostrandoVerso.style.boxShadow = 'none';
+  // let imagensDefaultSendoUsadas = false;
+  
+  
+  //cria cards
+  function criaCards(files){
+    posicaoCards = geraPosicaoAleatoriaDosCards( files.length );
+    let cards = [];
+    let cardsViradosAcertados = {};
+    let parVirado = false;
+
+    let card1MostrandoVerso;
+    let card2MostrandoVerso;
+
+    function eventoAoClicarCard(card, posicao){
+
+      if( !parVirado && !cardsViradosAcertados[card.style.backgroundImage] ){
+
+        if( !card1MostrandoVerso && !card2MostrandoVerso ){
+          card1MostrandoVerso = card;
+          modificaClasseCard(card1MostrandoVerso, posicao);
+        }else if( card1MostrandoVerso && !card2MostrandoVerso && card1MostrandoVerso !== card){
+          card2MostrandoVerso = card;
+          modificaClasseCard(card2MostrandoVerso, posicao);
+          
+          if( card1MostrandoVerso !== card2MostrandoVerso && card1MostrandoVerso.style.backgroundImage === card2MostrandoVerso.style.backgroundImage ){
+            cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] = true;
+            setTimeout( () => {
+              card1MostrandoVerso = undefined;
+              card2MostrandoVerso = undefined;
+            },2000);
+          }else{
+            let parVirado = true;
+            setTimeout( () => {
+              modificaClasseCard(card1MostrandoVerso, posicao);
+              modificaClasseCard(card2MostrandoVerso, posicao);
+              card1MostrandoVerso = undefined;
+              card2MostrandoVerso = undefined;
+            },2000);
+          }
+  
+        }
+  
+        // if( that === card1MostrandoVerso || that === card2MostrandoVerso){
+          //   if( that === card1MostrandoVerso && card2MostrandoVerso ){
+        //     modificaClasseCard(card1MostrandoVerso);
+        //     modificaClasseCard(card2MostrandoVerso);
+        //   }else if( that === card2MostrandoVerso && card1MostrandoVerso ){
+        //     modificaClasseCard(card1MostrandoVerso);
+        //     modificaClasseCard(card2MostrandoVerso);
+        //   }else if( that === card1MostrandoVerso ){
+        //     modificaClasseCard(card1MostrandoVerso);
+        //   }else if(  that === card2MostrandoVerso  ){
+        //     modificaClasseCard(card2MostrandoVerso);
+        //   }
+        //   card1MostrandoVerso = undefined;
+        //   card2MostrandoVerso = undefined;
+        // }else if( !card1MostrandoVerso ){
+        //   card1MostrandoVerso = that;
+        //   modificaClasseCard(card1MostrandoVerso);
+        // }else if( !card2MostrandoVerso ){
+        //   card2MostrandoVerso = that;
+        //   modificaClasseCard(card2MostrandoVerso);
+        // }else if( card1MostrandoVerso && card2MostrandoVerso ){
+        //   verificaCardViradoEIgual(card1MostrandoVerso, card2MostrandoVerso);
+        //   if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] ){
+        //     card1MostrandoVerso.classList.remove('card-verso');
+        //     card1MostrandoVerso.classList.add('card-frente');
+        //     card2MostrandoVerso.classList.remove('card-verso');
+        //     card2MostrandoVerso.classList.add('card-frente');
+        //   }
+        //   modificaClasseCard(that);
+        //   card1MostrandoVerso = that;
+        //   card2MostrandoVerso = undefined;
+        // }
+
       }
-    }else{
-      modificaTentativas();
     }
+
+    function modificaClasseCard(card, posicao){
+      if( card.classList.contains('card-frente') ){
+        card.classList.add('card-verso'); 
+        card.classList.remove('card-frente');
+        card.style.backgroundImage = `url(${ files[posicao] })`; 
+      }else if( card.classList.contains('card-verso') ){
+        card.classList.add('card-frente');
+        card.classList.remove('card-verso');
+      }else{
+        card.classList.add('card-verso');
+        card.style.backgroundImage = `url(${ files[posicao] })`; 
+      }
+    }
+
+    // cria cada cada card e coloca na div cards
+    files.forEach( (imagem, index) => {
+      let card1par = document.createElement('div');
+      card1par.classList.add('card');
+      let card2par = document.createElement('div');
+      card2par.classList.add('card');
+      
+      let posicao1;
+      let posicao2;
+
+      posicao1 = posicaoCards.indexOf(index);
+      cards[posicao1] = card1par;
+      posicao2 = posicaoCards.lastIndexOf(index);
+      cards[posicao2] = card2par;
+
+      cards[posicao1].addEventListener('click', (e) => eventoAoClicarCard(e.currentTarget, index));
+      cards[posicao2].addEventListener('click', (e) => eventoAoClicarCard(e.currentTarget, index));
+    });
+
+    cards.forEach( card => {
+      containerCards.appendChild(card)
+    });
+
+    //Verifica se os cards virados são iguais
+    function verificaCardViradoEIgual(card1MostrandoVerso = '', card2MostrandoVerso = ''){
+      console.log(card1MostrandoVerso);
+      if( card1MostrandoVerso.style.backgroundImage === card2MostrandoVerso.style.backgroundImage ){
+        if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage]){
+          cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] = true;
+          card1MostrandoVerso.style.boxShadow = 'none';
+          card2MostrandoVerso.style.boxShadow = 'none';
+        }
+      }else{
+        
+      }
+    }
+
   }
+
+  
 
   //gera posição aleatória dos cards
   function geraPosicaoAleatoriaDosCards( quantidadeDeImagens ){
@@ -72,107 +179,6 @@ const iniciaJogo = () => {
     return posicaoCards;
   }
 
-  //cria cards
-  function criaCard(files){
-    posicaoCards = geraPosicaoAleatoriaDosCards( files.length );
-    let cards = [];
-    let card1MostrandoVerso;
-    let card2MostrandoVerso
-
-    function eventoAoClicarCard(that, imagem, posicao){
-      
-      const modificaClasseCard = that => {
-        if( that.classList.contains('card-frente') ){
-          that.classList.add('card-verso'); 
-          that.classList.remove('card-frente');
-          if( imagensDefaultSendoUsadas ){
-            that.style.backgroundImage = `url(${ files[posicao] })`; 
-          }else{
-            that.style.backgroundImage = `url(${imagem})`;
-          }
-        }else if( that.classList.contains('card-verso') ){
-          that.classList.add('card-frente');
-          that.classList.remove('card-verso');
-        }else{
-          that.classList.add('card-verso');
-          if( imagensDefaultSendoUsadas ){
-            that.style.backgroundImage = `url(${ files[posicao] })`; 
-          }else{
-            that.style.backgroundImage = `url(${imagem})`;
-          }
-        }
-      }
-
-      if( tentativas !== 0 ){
-        if( that === card1MostrandoVerso || that === card2MostrandoVerso){
-          if( that === card1MostrandoVerso && card2MostrandoVerso ){
-            modificaClasseCard(card1MostrandoVerso);
-            modificaClasseCard(card2MostrandoVerso);
-          }else if( that === card2MostrandoVerso && card1MostrandoVerso ){
-            modificaClasseCard(card1MostrandoVerso);
-            modificaClasseCard(card2MostrandoVerso);
-          }else if( that === card1MostrandoVerso ){
-            modificaClasseCard(card1MostrandoVerso);
-          }else if(  that === card2MostrandoVerso  ){
-            modificaClasseCard(card2MostrandoVerso);
-          }
-          card1MostrandoVerso = undefined;
-          card2MostrandoVerso = undefined;
-        }else if( !card1MostrandoVerso ){
-          card1MostrandoVerso = that;
-          modificaClasseCard(card1MostrandoVerso);
-        }else if( !card2MostrandoVerso ){
-          card2MostrandoVerso = that;
-          modificaClasseCard(card2MostrandoVerso);
-        }else if( card1MostrandoVerso && card2MostrandoVerso ){
-          verificaCardViradoEIgual(card1MostrandoVerso, card2MostrandoVerso);
-          if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] ){
-            card1MostrandoVerso.classList.remove('card-verso');
-            card1MostrandoVerso.classList.add('card-frente');
-            card2MostrandoVerso.classList.remove('card-verso');
-            card2MostrandoVerso.classList.add('card-frente');
-          }
-          modificaClasseCard(that);
-          card1MostrandoVerso = that;
-          card2MostrandoVerso = undefined;
-        }
-      }
-
-    }
-
-    files.map( (imagem, index) => {
-      let card = document.createElement('div');
-      card.classList.add('card');
-      let card2 = document.createElement('div');
-      card2.classList.add('card');
-      let posicao1;
-      let posicao2;
-      if( !imagensDefaultSendoUsadas ){
-        imagem = URL.createObjectURL(imagem);
-      }
-
-      if( posicaoCards.indexOf(index) === 0 ){
-        posicao1 = posicaoCards.indexOf(index);
-        cards[posicao1] = card;
-        posicao2 = posicaoCards.lastIndexOf(index);
-        cards[posicao2] = card2;
-        cards[posicao1].addEventListener('click', () => eventoAoClicarCard(cards[posicao1], imagem, index));
-        cards[posicao2].addEventListener('click', () => eventoAoClicarCard(cards[posicao2], imagem, index));
-      }else{
-        posicao1 = posicaoCards.indexOf(index);
-        cards[posicao1] = card;
-        posicao2 = posicaoCards.lastIndexOf(index);
-        cards[posicao2] = card2;
-
-        cards[posicao1].addEventListener('click', () => eventoAoClicarCard(cards[posicao1], imagem, index));
-        cards[posicao2].addEventListener('click', () => eventoAoClicarCard(cards[posicao2], imagem, index));
-      }
-    });
-
-    cards.map( card => {
-      containerCards.appendChild(card)
-    });
-  }
 
   //apaga todos os cards do container cards
   function apagarTodosCards(){
@@ -180,59 +186,39 @@ const iniciaJogo = () => {
     cards.map( card => {
       card.parentElement.removeChild(card);
     });
-    input.value = null;
+    // input.value = null;
   }
 
-  function modificaTentativas(  ){
-    --tentativas;
-    if( tentativas === 0 ){
-      componentTentativas.innerHTML = `${tentativas} tentativas.`;
-      apagarTodosCards();
-      componentTentativas.style.display = 'none';
-      infoPerderOuGanharJogo.style.display = 'flex';
-      if( (containerCards.length/2) === tentativas.length ){
-        infoPerderOuGanharJogo.innerHTML = '<div>Parabéns por acertar todos, eu ainda não consegui completar.</div>';  
-      }else{
-        infoPerderOuGanharJogo.innerHTML = '<div>Você esgotou todas as tentativas :( .</div>';  
-      }
-    }else if( tentativas > 1 ){
-      componentTentativas.innerHTML = `${tentativas} tentativas.`;
-    }else{
-      componentTentativas.innerHTML = `${tentativas} tentativa.`;
-    }
-  }
+  
 
-  //recebe imagens do input
-  function handleFileSelect(evt) {
-    imagensDefaultSendoUsadas = false;
-    let files = [];
-    files = Array.from(evt.target.files);
-    apagarTodosCards();
-    criaCard(files);
-  }
+  // //recebe imagens do input
+  // function handleFileSelect(evt) {
+  //   imagensDefaultSendoUsadas = false;
+  //   let files = [];
+  //   files = Array.from(evt.target.files);
+  //   apagarTodosCards();
+  //   criaCard(files);
+  // }
 
-  if( !imagensDefaultSendoUsadas ){
+  
     function adicionaImagensDefault(){
       let files = [];
       let contadora = 1;
-      imagensDefaultSendoUsadas = true;
       do{
         files.push(`./imagens/${contadora}-personagem.gif`);
         contadora++;
       }while( files.length <= 6 );
-      criaCard(files);
-      if( files.length === 1 ){
-        tentativas = 1;
-        componentTentativas.innerHTML = `${tentativas} tentativa.`;
-      }else{
-        tentativas = Math.floor(files.length * .8);
-        componentTentativas.innerHTML = `${tentativas} tentativas.`;
-      }
+      apagarTodosCards();
+      criaCards(files);
     }
     adicionaImagensDefault();
-  }
+
 }
 
+iniciaJogo();
 
+addEventListener('load', () => {
+  console.log(window.innerHeight);
+  // document.body.style.height = window.pageYOffset + 'px';
   
-
+})
