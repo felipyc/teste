@@ -7,13 +7,7 @@
 const containerJogo = document.querySelector('.container-jogo');
 const containerCards = document.querySelector('.container-cards');
 
-const iniciaJogo = () => {
-
-  // const input = document.getElementById('imagens');
-  // input.addEventListener('change', handleFileSelect, false);
-
-  // let imagensDefaultSendoUsadas = false;
-  
+const iniciaJogo = () => {  
   
   //cria cards
   function criaCards(files){
@@ -53,39 +47,6 @@ const iniciaJogo = () => {
           }
   
         }
-  
-        // if( that === card1MostrandoVerso || that === card2MostrandoVerso){
-          //   if( that === card1MostrandoVerso && card2MostrandoVerso ){
-        //     modificaClasseCard(card1MostrandoVerso);
-        //     modificaClasseCard(card2MostrandoVerso);
-        //   }else if( that === card2MostrandoVerso && card1MostrandoVerso ){
-        //     modificaClasseCard(card1MostrandoVerso);
-        //     modificaClasseCard(card2MostrandoVerso);
-        //   }else if( that === card1MostrandoVerso ){
-        //     modificaClasseCard(card1MostrandoVerso);
-        //   }else if(  that === card2MostrandoVerso  ){
-        //     modificaClasseCard(card2MostrandoVerso);
-        //   }
-        //   card1MostrandoVerso = undefined;
-        //   card2MostrandoVerso = undefined;
-        // }else if( !card1MostrandoVerso ){
-        //   card1MostrandoVerso = that;
-        //   modificaClasseCard(card1MostrandoVerso);
-        // }else if( !card2MostrandoVerso ){
-        //   card2MostrandoVerso = that;
-        //   modificaClasseCard(card2MostrandoVerso);
-        // }else if( card1MostrandoVerso && card2MostrandoVerso ){
-        //   verificaCardViradoEIgual(card1MostrandoVerso, card2MostrandoVerso);
-        //   if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] ){
-        //     card1MostrandoVerso.classList.remove('card-verso');
-        //     card1MostrandoVerso.classList.add('card-frente');
-        //     card2MostrandoVerso.classList.remove('card-verso');
-        //     card2MostrandoVerso.classList.add('card-frente');
-        //   }
-        //   modificaClasseCard(that);
-        //   card1MostrandoVerso = that;
-        //   card2MostrandoVerso = undefined;
-        // }
 
       }
     }
@@ -172,20 +133,7 @@ const iniciaJogo = () => {
     cards.map( card => {
       card.parentElement.removeChild(card);
     });
-    // input.value = null;
   }
-
-  
-
-  // //recebe imagens do input
-  // function handleFileSelect(evt) {
-  //   imagensDefaultSendoUsadas = false;
-  //   let files = [];
-  //   files = Array.from(evt.target.files);
-  //   apagarTodosCards();
-  //   criaCard(files);
-  // }
-
   
     function adicionaImagensDefault(){
       let files = [];
@@ -204,9 +152,13 @@ const iniciaJogo = () => {
 iniciaJogo();
 
 addEventListener('load', () => {
-  let cards = Array.from(containerCards.children);
   if( window.innerHeight > containerCards.clientHeight ){
     document.body.style.height = window.innerHeight + 'px';  
   }
-  
+})
+
+addEventListener('resize', () => {
+  if( window.innerHeight > containerCards.clientHeight ){
+    document.body.style.height = window.innerHeight + 'px';  
+  }
 })
