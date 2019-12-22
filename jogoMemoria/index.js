@@ -218,7 +218,8 @@ const iniciaJogo = () => {
 iniciaJogo();
 
 addEventListener('load', () => {
-  console.log(window.innerHeight);
-  // document.body.style.height = window.pageYOffset + 'px';
-  
+  if( window.innerHeight > containerCards.clientHeight ){
+    document.body.style.height = window.innerHeight + 'px';
+    
+  }
 })
