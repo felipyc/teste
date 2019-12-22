@@ -33,7 +33,6 @@ body{
 .container-cards{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -88,4 +87,16 @@ body{
 }
 
 
+@media ( max-width:  475px){
+    .card{
+        width: 70px;
+        height: 120px;
+    }
+}
 
+@media (min-width: 476px) and (max-width: 800px){
+    .card{
+        width: 100px;
+        height: 150px;
+    }
+}

@@ -127,20 +127,6 @@ const iniciaJogo = () => {
       containerCards.appendChild(card)
     });
 
-    //Verifica se os cards virados são iguais
-    function verificaCardViradoEIgual(card1MostrandoVerso = '', card2MostrandoVerso = ''){
-      console.log(card1MostrandoVerso);
-      if( card1MostrandoVerso.style.backgroundImage === card2MostrandoVerso.style.backgroundImage ){
-        if( !cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage]){
-          cardsViradosAcertados[card1MostrandoVerso.style.backgroundImage] = true;
-          card1MostrandoVerso.style.boxShadow = 'none';
-          card2MostrandoVerso.style.boxShadow = 'none';
-        }
-      }else{
-        
-      }
-    }
-
   }
 
   
@@ -218,8 +204,9 @@ const iniciaJogo = () => {
 iniciaJogo();
 
 addEventListener('load', () => {
+  let cards = Array.from(containerCards.children);
   if( window.innerHeight > containerCards.clientHeight ){
-    document.body.style.height = window.innerHeight + 'px';
-    
+    document.body.style.height = window.innerHeight + 'px';  
   }
+  
 })
