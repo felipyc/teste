@@ -16,7 +16,7 @@
                         <label for='texto'>Texto</label>
                     </div>
                     <div>
-                        <input type='text' id='text' value='Eu sou uma caixa'>
+                        <input type='text' name='text' id='text'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -24,7 +24,7 @@
                         <label>Color</label>
                     </div>
                     <div>
-                        <input type='color' id='color' value="#ff0000">
+                        <input type='color' name='color' id='color'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -32,7 +32,7 @@
                         <label>Background-color</label>
                     </div>
                     <div>
-                        <input type='color' id='background-color'>
+                        <input type='color' name='backgroundColor' id='background-color'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -40,7 +40,7 @@
                         <label for='border'>Border</label>
                     </div>
                     <div>
-                        <input type='text' id='border' value='2px solid black'>
+                        <input type='text' name='border' id='border' value='2px solid black'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -48,10 +48,10 @@
                         <label>Font family</label>
                     </div>
                     <div>
-                        <select name="" id="font-family">
+                        <select name="fontFamily" id="font-family">
                             <option>Arial</option>
-                            <option>Times New Roman</option>
-                            <option>Roboto</option>
+                            <option>cursive</option>
+                            <option>Fantasy</option>
                         </select>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                         <label>Border-radius</label>
                     </div>
                     <div>
-                        <input type='range' id='border-radius' min='0' max='100' value='0'>
+                        <input type='range' name='borderRadius' id='border-radius' min='0' max='100' value='0'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -68,7 +68,7 @@
                         <label for=>Height</label>
                     </div>
                     <div>
-                        <input type='range' id='height' min='20' max='100' value='50'>
+                        <input type='range' name='height' id='height' min='20' max='100' value='20'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -76,7 +76,7 @@
                         <label>Width</label>
                     </div>
                     <div>
-                        <input type='range' id='width' min='20' max='100' value='50'>
+                        <input type='range' name='width' id='width' min='20' max='100' value='20'>
                     </div>
                 </div>
                 <div class='separador'>
@@ -84,13 +84,15 @@
                         <label>Font Size</label>
                     </div>
                     <div>
-                        <input type='range' id='font-size' min='16' max='100' value='1'>
+                        <input type='range' name='fontSize' id='font-size' min='16' max='100' value='1'>
                     </div>
                 </div>
             </form>
         </div>  
 
-        <div class='container-elemento-criado'></div> 
+        <div class='container-elemento-criado'>
+            <button class='botao-css'>clicar</button>
+        </div> 
     </div >
     <script type='module' src='./js/index.js'></script>
 </body>
