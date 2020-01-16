@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class='container-caracteristicas-e-elemento'>
+        <div>
+            <form name='containerCaracteristicas'>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label for='texto'>Texto</label>
+                    </div>
+                    <div>
+                        <input type='text' id='text' value='Eu sou uma caixa'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Color</label>
+                    </div>
+                    <div>
+                        <input type='color' id='color' value="#ff0000">
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Background-color</label>
+                    </div>
+                    <div>
+                        <input type='color' id='background-color'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label for='border'>Border</label>
+                    </div>
+                    <div>
+                        <input type='text' id='border' value='2px solid black'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Font family</label>
+                    </div>
+                    <div>
+                        <select name="" id="font-family">
+                            <option>Arial</option>
+                            <option>Times New Roman</option>
+                            <option>Roboto</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Border-radius</label>
+                    </div>
+                    <div>
+                        <input type='range' id='border-radius' min='0' max='100' value='0'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label for=>Height</label>
+                    </div>
+                    <div>
+                        <input type='range' id='height' min='20' max='100' value='50'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Width</label>
+                    </div>
+                    <div>
+                        <input type='range' id='width' min='20' max='100' value='50'>
+                    </div>
+                </div>
+                <div class='separador'>
+                    <div class='titulo'>
+                        <label>Font Size</label>
+                    </div>
+                    <div>
+                        <input type='range' id='font-size' min='16' max='100' value='1'>
+                    </div>
+                </div>
+            </form>
+        </div>  
+
+        <div class='container-elemento-criado'></div> 
+    </div >
+    <script type='module' src='./js/index.js'></script>
+</body>
+</html>
