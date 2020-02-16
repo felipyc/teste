@@ -27,7 +27,6 @@ body {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  text-align: center;
 }
 
 .container-input-button-nova-tarefa .button-criar-nova-tarefa {
