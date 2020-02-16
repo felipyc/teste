@@ -1,92 +1,122 @@
 
 
-const inputNovaTarefa = document.querySelector('.input-nova-tarefa');
-const buttonNewTarefa = document.querySelector('.button-criar-nova-tarefa');
-const containerTarefasCriadas = document.querySelector('.container-tarefas-criadas');
-let tarefaSendoEditada = false;
+function init() {
 
-buttonNewTarefa.addEventListener('click', criarNovaTarefa);
-
-function criarNovaTarefa(){
-    if ( inputNovaTarefa.value.length !== 0 && !tarefaSendoEditada ) {
-        const moldeTarefa = document.querySelector('.molde .container-status-tarefa-actions');
-        const tarefa = moldeTarefa.cloneNode(true);
+    const inputNovaTarefa = document.querySelector('.input-nova-tarefa');
+    const buttonNewTarefa = document.querySelector('.button-criar-nova-tarefa');
+    const containerTarefasCriadas = document.querySelector('.container-tarefas-criadas');
+    let tarefaSendoEditada = false;
     
-        tarefa.querySelector('.tarefa-criada-texto').innerHTML = inputNovaTarefa.value;
-        inputNovaTarefa.value = '';
+    buttonNewTarefa.addEventListener('click', criarNovaTarefa);
+    
+    function criarNovaTarefa(){
+        if ( inputNovaTarefa.value.length !== 0 && !tarefaSendoEditada ) {
+            const moldeTarefa = document.querySelector('.molde .container-status-tarefa-actions');
+            const tarefa = moldeTarefa.cloneNode(true);
 
-        adicionarActions(tarefa);
-        modificarStatus(tarefa)
-
-        containerTarefasCriadas.appendChild(tarefa);
-    }
-
-    function modificarStatus(tarefa) {
-        const iconChecked = tarefa.querySelector('.status-tarefa i');
-        iconChecked.addEventListener('click', function(){
-            if( !tarefaSendoEditada ) {
-                if( !iconChecked.hasAttribute('data-checked') ) {
-                    iconChecked.classList.remove('fa-square-o');
-                    iconChecked.classList.add('fa-check-square-o');
-                    tarefa.classList.add('tarefa-feita');
-                    iconChecked.dataset.checked = '';
-                }
-                else {
-                    iconChecked.classList.remove('fa-check-square-o');
-                    iconChecked.classList.add('fa-square-o'); 
-                    tarefa.classList.remove('tarefa-feita')
-                    delete iconChecked.dataset.checked;
-                } 
+            // adiciona keys para backup localStorage
+            if( !containerTarefasCriadas.querySelector('.container-status-tarefa-actions') ){
+                tarefa.setAttribute('data-key', '1');
             }else {
-                this.checked = false;
+                let ultimaKey = containerTarefasCriadas.lastElementChild.getAttribute('data-key');
+                
+                tarefa.setAttribute('data-key', +ultimaKey+1);
             }
-        });
-    }
-    
-    function adicionarActions(tarefa) {
-        const editar = tarefa.querySelector('.actions .editar');
-        const excluir = tarefa.querySelector('.actions .excluir');
-        const tarefaTexto = tarefa.querySelector('.tarefa-criada-texto');
-    
-        editar.addEventListener('click', function() {
-            if( !tarefaSendoEditada || tarefaTexto.hasAttribute('data-editando')) {
-                if ( !tarefaTexto.hasAttribute('data-editando') ) {
-                    tarefaTexto.dataset.editando =  '';
-                    
-                    let input = document.createElement('input');
-                    input.setAttribute('type', 'text');
-                    input.setAttribute('class', 'input-editar-tarefa');
-                    input.value = tarefaTexto.innerHTML;
         
-                    tarefaTexto.innerHTML = '';
-                    tarefaTexto.appendChild(input);
-                    tarefaSendoEditada = true;
-                }else {
-                    delete tarefaTexto.dataset.editando;
-                    tarefaTexto.innerHTML = tarefaTexto.querySelector('input').value;
-                    tarefaSendoEditada = false;
-                }
-            }
-        });
+            tarefa.querySelector('.tarefa-criada-texto').innerHTML = inputNovaTarefa.value;
+            inputNovaTarefa.value = '';
     
-        excluir.addEventListener('click', function(){
-            if( !tarefaSendoEditada ) 
-                tarefa.remove();
-        });
+            adicionarActions(tarefa);
+            modificarStatus(tarefa)
     
-    }
-}
-
-function verificaTarefasConcluidas() {
-    const containerTodasTarefasConcluidas = document.querySelector('.container-tarefas-concluidas-ate-agora');
-
-    let loopVerificaTarefasConcluidas = setInterval(() => {
-        let todasTarefasConcluidas = document.querySelectorAll('.tarefa-feita');
-        if ( todasTarefasConcluidas.length )
-            containerTodasTarefasConcluidas.innerHTML = `<i class="fa fa-check-square-o" aria-hidden="true" data-checked=""></i>&nbsp;${todasTarefasConcluidas.length}`;
-        else {
-            containerTodasTarefasConcluidas.innerHTML = '';
+            containerTarefasCriadas.appendChild(tarefa);
         }
-    }, 0);
+    
+        function modificarStatus(tarefa) {
+            const iconChecked = tarefa.querySelector('.status-tarefa i');
+            iconChecked.addEventListener('click', function(){
+                if( !tarefaSendoEditada ) {
+                    if( !iconChecked.hasAttribute('data-checked') ) {
+                        iconChecked.classList.remove('fa-square-o');
+                        iconChecked.classList.add('fa-check-square-o');
+                        tarefa.classList.add('tarefa-feita');
+                        iconChecked.dataset.checked = '';
+                        salvaTarefasLocalStorage(tarefa);
+                    }
+                    else {
+                        iconChecked.classList.remove('fa-check-square-o');
+                        iconChecked.classList.add('fa-square-o'); 
+                        tarefa.classList.remove('tarefa-feita')
+                        delete iconChecked.dataset.checked;
+                        salvaTarefasLocalStorage(tarefa);
+                    } 
+                }else {
+                    this.checked = false;
+                }
+            });
+        }
+        
+        function adicionarActions(tarefa) {
+            const editar = tarefa.querySelector('.actions .editar');
+            const excluir = tarefa.querySelector('.actions .excluir');
+            const tarefaTexto = tarefa.querySelector('.tarefa-criada-texto');
+        
+            editar.addEventListener('click', function() {
+                if( !tarefaSendoEditada || tarefaTexto.hasAttribute('data-editando')) {
+                    if ( !tarefaTexto.hasAttribute('data-editando') ) {
+                        tarefaTexto.dataset.editando =  '';
+                        
+                        let input = document.createElement('input');
+                        input.setAttribute('type', 'text');
+                        input.setAttribute('class', 'input-editar-tarefa');
+                        input.value = tarefaTexto.innerHTML;
+            
+                        tarefaTexto.innerHTML = '';
+                        tarefaTexto.appendChild(input);
+                        tarefaSendoEditada = true;
+                    }else {
+                        delete tarefaTexto.dataset.editando;
+                        tarefaTexto.innerHTML = tarefaTexto.querySelector('input').value;
+                        tarefaSendoEditada = false;
+                        salvaTarefasLocalStorage(tarefa);
+                    }
+                }
+            });
+        
+            excluir.addEventListener('click', function(){
+                if( !tarefaSendoEditada ) {
+                    tarefa.remove();
+                    salvaTarefasLocalStorage(tarefa);
+                }
+            });
+        
+        }
+
+    } /* end criarNovaTarefa */ 
+    
+    function verificaTarefasConcluidas() {
+        const containerTodasTarefasConcluidas = document.querySelector('.container-tarefas-concluidas-ate-agora');
+    
+        let loopVerificaTarefasConcluidas = setInterval(() => {
+            let todasTarefasConcluidas = document.querySelectorAll('.tarefa-feita');
+            if ( todasTarefasConcluidas.length )
+                containerTodasTarefasConcluidas.innerHTML = `<i class="fa fa-check-square-o" aria-hidden="true" data-checked=""></i>&nbsp;${todasTarefasConcluidas.length}`;
+            else {
+                containerTodasTarefasConcluidas.innerHTML = '';
+            }
+        }, 0);
+    }
+    verificaTarefasConcluidas();
+
+    function salvaTarefasLocalStorage(tarefa) {
+
+        let tarefas = containerTarefasCriadas.querySelectorAll('.container-status-tarefa-actions');
+
+        console.log(tarefas);
+
+        console.log( tarefa );
+
+    }
+
 }
-verificaTarefasConcluidas();
+init();

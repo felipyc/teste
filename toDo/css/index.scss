@@ -11,16 +11,18 @@ body {
 
 .container-input-button-nova-tarefa {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+
+    position: relative;
 
     padding: 10px;
-
-    text-align: center;
 
     .input-nova-tarefa {
         padding: 10px;
         border: none;
         outline: none;
+        flex: 1;
+        text-align: center;
     }
 
     .button-criar-nova-tarefa {
@@ -50,6 +52,8 @@ body {
         justify-content: space-between;
     
         min-height: 40px;
+
+        margin: 10px;
     
         animation: efeitoEntradaNovaTarefa 1s forwards;
     
@@ -64,13 +68,12 @@ body {
         
         .tarefa-criada-texto {
             display: flex;
-            justify-content: center;
+            
             align-items: center;
             flex: 1;
             
             padding: 10px;
-            
-            
+            text-align: left;
             word-break: break-all;
             .input-editar-tarefa {
                 padding: 10px;
@@ -109,10 +112,23 @@ body {
 
 .container-tarefas-criadas {
 
-    .container-status-tarefa-actions.tarefa-feita {
+    .tarefa-feita {
         
         position: relative;
         filter: opacity(0.5);
+
+        &::after {
+            content: '';
+            
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+
+            border-bottom: .5px solid gray;
+            height: .5px;
+        }
     
         .status-tarefa {
             
@@ -121,7 +137,7 @@ body {
         }
     
         .tarefa-criada-texto {
-            text-decoration: line-through;
+            
         }
         
         .actions {

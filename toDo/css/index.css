@@ -13,17 +13,21 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
   padding: 10px;
-  text-align: center;
 }
 
 .container-input-button-nova-tarefa .input-nova-tarefa {
   padding: 10px;
   border: none;
   outline: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
 }
 
 .container-input-button-nova-tarefa .button-criar-nova-tarefa {
@@ -69,6 +73,7 @@ body {
       -ms-flex-pack: justify;
           justify-content: space-between;
   min-height: 40px;
+  margin: 10px;
   -webkit-animation: efeitoEntradaNovaTarefa 1s forwards;
           animation: efeitoEntradaNovaTarefa 1s forwards;
 }
@@ -90,9 +95,6 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -100,6 +102,7 @@ body {
       -ms-flex: 1;
           flex: 1;
   padding: 10px;
+  text-align: left;
   word-break: break-all;
 }
 
@@ -149,14 +152,22 @@ body {
   }
 }
 
-.container-tarefas-criadas .container-status-tarefa-actions.tarefa-feita {
+.container-tarefas-criadas .tarefa-feita {
   position: relative;
   -webkit-filter: opacity(0.5);
           filter: opacity(0.5);
 }
 
-.container-tarefas-criadas .container-status-tarefa-actions.tarefa-feita .tarefa-criada-texto {
-  text-decoration: line-through;
+.container-tarefas-criadas .tarefa-feita::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 100%;
+  border-bottom: .5px solid gray;
+  height: .5px;
 }
 
 .container-tarefas-concluidas-ate-agora {
