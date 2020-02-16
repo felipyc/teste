@@ -3,53 +3,76 @@ const formCaracteristicas = document.forms.containerCaracteristicas;
 
 const containerElementoCriado = document.querySelector('.container-elemento-criado');
 
+const btn = document.querySelector('.botao-css');
+
 // text
 // color
-// background-color 
+// backgroundColor 
+// border 
+// fontFamily 
+// borderRadius 
 // height 
 // width 
-// border 
-// border-radius 
-// font-family 
-// font-size 
+// fontSize 
 
-
-console.log( containerElementoCriado.children.length );
-
-function handleChange() {
-    let inputs =  Array.from(this.elements);
-    let propriedadesCss = ['','color','background-color','border','font-family','border-radius','height','width','font-size'];
-    let propriedadesCssDoNovoElemento = '';
-    
-    
-    
-    if( containerElementoCriado.children.length === 1 ){
-        containerElementoCriado.children[0].remove();
+let handleStyle = {
+    element: document.querySelector('.botao-css'),
+    text(value){
+        this.element.innerText = value;
+        this.element.classList.remove('botao-css-giro');
+    },
+    color(value){
+        this.element.style.color = value;
+        this.element.classList.remove('botao-css-giro');
+    },
+    backgroundColor(value){
+        this.element.style.backgroundColor = value;
+        this.element.classList.remove('botao-css-giro');
+    },
+    border(value){
+        this.element.style.border = value;
+        this.element.classList.remove('botao-css-giro');
+    },
+    fontFamily(value){
+        this.element.style.fontFamily = value;
+        this.element.classList.remove('botao-css-giro');
+    },
+    borderRadius(value){
+        this.element.style.borderRadius = value + '%';
+        this.element.classList.remove('botao-css-giro');
+    },
+    height(value){
+        this.element.style.height = value + 'px';
+        this.element.classList.remove('botao-css-giro');
+    },
+    width(value){
+        this.element.style.width = value + 'px';
+        this.element.classList.remove('botao-css-giro');
+    },
+    fontSize(value){
+        this.element.style.fontSize = value + 'px';
+        this.element.classList.remove('botao-css-giro');
     }
+}
+
+function handleChange(e) {
+    let propriedadeCss = e.target.name;
+    let value = e.target.value;
+
+    handleStyle[propriedadeCss](value);
     
-
-    inputs.forEach( (input, index) => {
-        if( index !== 0){
-            if( index >= 6  ){
-                propriedadesCssDoNovoElemento += `${propriedadesCss[index]}: ${input.value}px;`;
-            }else if( index === 5 ){
-                propriedadesCssDoNovoElemento += `${propriedadesCss[index]}: ${input.value}%;`;
-            }else{
-                propriedadesCssDoNovoElemento += `${propriedadesCss[index]}: ${input.value};`;
-            }
-        }
-    });
-
-    let newDiv = document.createElement('div');
-    newDiv.innerText = inputs[0].value;
-    newDiv.style.cssText = propriedadesCssDoNovoElemento;
-
-    containerElementoCriado.appendChild(newDiv);
-    
-
-    
-
 }
 
 formCaracteristicas.addEventListener('change', handleChange);
+
+btn.addEventListener('click', () => {
+    btn.classList.add('botao-css-giro');
+    let texto = btn.innerText.split('');
+    btn.innerText = '';
+    texto.forEach( (caracter, index) => {
+        setTimeout(() => {
+            btn.innerText += caracter;
+        }, 200 * index);
+    });
+});
 
