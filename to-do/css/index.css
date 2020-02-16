@@ -1,0 +1,153 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container-input-button-nova-tarefa {
+  padding: 10px;
+  text-align: center;
+}
+
+.container-input-button-nova-tarefa .input-nova-tarefa {
+  padding: 10px;
+  border: none;
+  border: .5px solid #f5f5f5;
+  outline: none;
+  font-family: monospace;
+}
+
+.container-input-button-nova-tarefa .button-criar-nova-tarefa {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  -webkit-animation: giraBotaoAdicionarNovaTarefa 2s infinite;
+          animation: giraBotaoAdicionarNovaTarefa 2s infinite;
+}
+
+@-webkit-keyframes giraBotaoAdicionarNovaTarefa {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes giraBotaoAdicionarNovaTarefa {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.container-status-tarefa-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 40px;
+  -webkit-animation: efeitoEntradaNovaTarefa 1s forwards;
+          animation: efeitoEntradaNovaTarefa 1s forwards;
+}
+
+.container-status-tarefa-actions .status-tarefa {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+.container-status-tarefa-actions .tarefa-criada-texto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 10px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.container-status-tarefa-actions .tarefa-criada-texto .input-editar-tarefa {
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.container-status-tarefa-actions .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container-status-tarefa-actions .actions i {
+  padding: 10px;
+}
+
+@-webkit-keyframes efeitoEntradaNovaTarefa {
+  from {
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes efeitoEntradaNovaTarefa {
+  from {
+    -webkit-transform: translateX(-200px);
+            transform: translateX(-200px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+.tarefa-feita {
+  position: relative;
+  -webkit-filter: opacity(0.5);
+          filter: opacity(0.5);
+}
+
+.tarefa-feita .tarefa-criada-texto {
+  text-decoration: line-through;
+}
+/*# sourceMappingURL=index.css.map */

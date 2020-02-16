@@ -1,0 +1,142 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.container-input-button-nova-tarefa {
+    padding: 10px;
+    text-align: center;
+
+    .input-nova-tarefa {
+        padding: 10px;
+        border: none;
+        border: .5px solid #f5f5f5;
+        outline: none;
+        font-family: monospace;
+    }
+
+    .button-criar-nova-tarefa {
+        cursor: pointer;
+        
+        outline: none;
+        border: none;
+        background-color: transparent;
+        animation: giraBotaoAdicionarNovaTarefa 2s infinite;
+    }
+
+    @keyframes giraBotaoAdicionarNovaTarefa {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+}
+
+.container-status-tarefa-actions {
+    display: flex;
+    justify-content: space-between;
+
+    min-height: 40px;
+
+    animation: efeitoEntradaNovaTarefa 1s forwards;
+
+    .status-tarefa {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 10px;
+        
+    }
+    
+    .tarefa-criada-texto {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        
+        padding: 10px;
+        
+        font-family: monospace;
+        word-break: break-all;
+        .input-editar-tarefa {
+            padding: 10px;
+            background: black;
+            color: white;
+            border: none;
+            outline: none;
+        }
+    }
+
+    .actions {
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        i {
+            
+            padding: 10px;
+        }
+    }
+
+}
+
+@keyframes efeitoEntradaNovaTarefa {
+    from {
+        transform: translateX(-200px);
+    }
+    to {
+        transform: translateX(0px);
+    }
+}
+
+//tarefa feita 
+
+.tarefa-feita {
+    
+    position: relative;
+    filter: opacity(0.5);
+
+    // &::after {
+    //     content: '';
+    //     display: block;
+        
+    //     width: 100%;
+
+    //     margin: 10px;
+
+    //     border-bottom: .5px solid black;
+
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     transform: translate(-50%, -50%);
+        
+    // }
+
+    .status-tarefa {
+        
+        
+
+    }
+
+    .tarefa-criada-texto {
+        text-decoration: line-through;
+    }
+    
+    .actions {
+        
+    }
+
+}
+
+//end tarefa feita 
